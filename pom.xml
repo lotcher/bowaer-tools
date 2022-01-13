@@ -9,7 +9,7 @@
   <description>A collection of common Scala tools</description>
   <licenses>
     <license>
-      <name>Apache License, Version 2.0</name>
+      <name>MIT License</name>
       <url>https://github.com/lotcher/bowaer-tools/blob/main/LICENSE</url>
       <distribution>repo</distribution>
       <comments>A business-friendly OSS license</comments>
@@ -112,6 +112,13 @@
               <goal>compile</goal>
             </goals>
           </execution>
+          <!--生成javadoc.jar-->
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>doc-jar</goal>
+            </goals>
+          </execution>
           <execution>
             <id>scala-test-compile</id>
             <phase>process-test-resources</phase>
@@ -155,19 +162,6 @@
             <id>attach-sources</id>
             <goals>
               <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
