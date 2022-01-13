@@ -2,7 +2,7 @@ import org.junit.{Test, Assert}
 import wiki.lbj.Common._
 
 
-class CommonTest extends Assert {
+class CommonTest {
     @Test def testTimeIt(): Unit = {
         timeIt(Thread.sleep(1000))
         timeIt(Thread.sleep(1000), count = 3)

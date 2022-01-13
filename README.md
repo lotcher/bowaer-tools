@@ -22,3 +22,7 @@ Contains common tool functions, such as exception handling(triable), block execu
 ### JsonParser
 
 Provide more convenient operation for the JsonNode returned by Jackson
+
+### Implicits
+
+Add common properties and methods to standard library objects, such as Map, Double, etc
