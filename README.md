@@ -1,5 +1,7 @@
 # bowaer-tools
-A collection of common Scala tools, refer to unit test for usage.
+
+A collection of common Scala tools, refer to unit test for usage. 
+[Scala Docs](https://lotcher.github.io/bowaer-tools/)
 
 ## Installation
 
