@@ -11,9 +11,17 @@ A collection of common Scala tools, refer to unit test for usage.
 <dependency>
   <groupId>wiki.lbj</groupId>
   <artifactId>bowaer-tools</artifactId>
-  <version>1.0.0</version>
+  <version>1.2.0</version>
 </dependency>
 ```
+
+### SBT
+
+```shell
+libraryDependencies += "wiki.lbj" % "bowaer-tools" % "1.2.0"
+```
+
+
 
 ## Intro
 
@@ -28,3 +36,7 @@ Provide more convenient operation for the JsonNode returned by Jackson
 ### Implicits
 
 Add common properties and methods to standard library objects, such as Map, Double, etc
+
+### Logger
+
+Output the log directly on any object, which is convenient to print intermediate variables in chain call. You can control the printing behavior by customizing the Marker
