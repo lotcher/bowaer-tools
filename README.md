@@ -11,14 +11,14 @@ A collection of common Scala tools, refer to unit test for usage.
 <dependency>
   <groupId>wiki.lbj</groupId>
   <artifactId>bowaer-tools</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
 </dependency>
 ```
 
 ### SBT
 
 ```shell
-libraryDependencies += "wiki.lbj" % "bowaer-tools" % "1.2.0"
+libraryDependencies += "wiki.lbj" % "bowaer-tools" % "1.2.1"
 ```
 
 
