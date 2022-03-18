@@ -20,4 +20,31 @@ object Implicits {
         def sub[B](fields: Iterable[K], transfer: V => B): Map[K, B] =
             sub(fields).map { case (k, v) => k -> transfer(v) }
     }
+
+    implicit class SeqMixIn[T](seq: Seq[T]) {
+        def get(i: Int, other: T): T = seq.applyOrElse(i, (_: Int) => other)
+
+        def gets(indices: Seq[Int], other: T): Seq[T] = indices.map(i => get(i, other))
+
+        def maxTrueRange(transfer: T => Boolean): (Int, Int) = {
+            var ranges = (0, 0)
+            var (maxCount, currentCount, start) = (0, 0, 0)
+            seq.zipWithIndex.foreach {
+                case (v, i) =>
+                    if (transfer(v)) currentCount += 1
+                    else {
+                        if (currentCount > maxCount) {
+                            maxCount = currentCount
+                            ranges = (start, i - 1)
+                        }
+                        currentCount = 0
+                        start = i + 1
+                    }
+            }
+            if (currentCount > maxCount) ranges = (start, seq.length - 1)
+            ranges
+        }
+
+        def filter(isFilters: Seq[Boolean]): Seq[T] = seq.zip(isFilters).filter(_._2).map(_._1)
+    }
 }
