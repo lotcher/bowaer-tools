@@ -26,6 +26,8 @@ object Implicits {
     implicit class SeqMixIn[T](seq: Seq[T]) {
         def get(i: Int, other: T): T = seq.applyOrElse(i, (_: Int) => other)
 
+        def gets(indices: Seq[Int]): Seq[T] = indices.map(seq.apply)
+
         def gets(indices: Seq[Int], other: T): Seq[T] = indices.map(i => get(i, other))
 
         def maxTrueRange(transfer: T => Boolean): (Int, Int) = {
