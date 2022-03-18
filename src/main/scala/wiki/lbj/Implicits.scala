@@ -1,5 +1,7 @@
 package wiki.lbj
 
+import wiki.lbj.JsonParser.mapper
+
 object Implicits {
     implicit class DoubleMixin(double: Double) {
         def precision(n: Int = 0): Double = double.formatted(s"%.${n}f").toDouble
@@ -70,5 +72,13 @@ object Implicits {
                 sortedValues(index) + (sortedValues(index + 1) - sortedValues(index)) * deviation
             })
         }
+    }
+
+    implicit class BoolMixin(bool: Boolean) {
+        def toInt: Int = if (bool) 1 else 0
+    }
+
+    implicit class AnyMixin(obj: Any) {
+        def toJson: String = mapper.writeValueAsString(obj)
     }
 }
