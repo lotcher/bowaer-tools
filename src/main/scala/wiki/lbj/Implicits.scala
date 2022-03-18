@@ -47,4 +47,28 @@ object Implicits {
 
         def filter(isFilters: Seq[Boolean]): Seq[T] = seq.zip(isFilters).filter(_._2).map(_._1)
     }
+
+    implicit class DoubleSeqMixin(seq: Seq[Double]) {
+        def mean: Double = seq.sum / seq.length
+
+        def std: Double = {
+            val m = mean
+            math.sqrt(seq.map(x => math.pow(x - m, 2)).sum / seq.length)
+        }
+
+        // 差分
+        def difference: Seq[Double] = seq.sliding(2).map(s => s.last - s.head).toSeq
+
+        //欧氏距离
+        def distance(other: Seq[Double]): Double = math.sqrt(seq.zip(other).map(x => math.pow(x._1 - x._2, 2)).sum)
+
+        def quantiles(qs: Double*): Seq[Double] = {
+            val sortedValues = seq.toArray.sorted
+            qs.map(q => {
+                val i = (seq.size - 1) * q
+                val (index, deviation) = (i.toInt, i % 1)
+                sortedValues(index) + (sortedValues(index + 1) - sortedValues(index)) * deviation
+            })
+        }
+    }
 }
